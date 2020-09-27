@@ -8,7 +8,7 @@
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
-    "build": "webpack --progress"
+    "build": "webpack --progress && npx lite-server index.html"
   },
   "repository": {
     "type": "git",
