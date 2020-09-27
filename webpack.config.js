@@ -1,4 +1,8 @@
 const path = require("path");
+const webpack = require("webpack")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const { CleanWebpackPlugin } = require("clean-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = {
   mode: "development",
@@ -13,7 +17,10 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader"
+        ]
       },
       {
         test: /\.(png|jpg|svg|gif)$/,
@@ -24,7 +31,26 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.BannerPlugin({
+      banner: `
+        Build Time: ${new Date().toTimeString().toLocaleString()}
+      `
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      templateParameters: {
+        env: process.env.NODE_ENV === 'production' ? ' - 개발환경' : ' - 프로덕션'
+      },
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true
+      }
+    }),
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({filename: '[name].css'})
+  ]
   /**
    * TODO: 아래 플러그인을 추가해서 번들 결과를 만들어 보세요.
    * 1. BannerPlugin: 결과물에 빌드 시간을 출력하세요.
