@@ -20,10 +20,11 @@ module.exports = {
       },
       {
         test: /\.(jpg|png)$/,
-        loader: 'file-loader',
+        loader: 'url-loader',
         options: {
           publicPath: './dist/',
-          name: '[name].[ext]?[hash]'
+          name: '[name].[ext]?[hash]',
+          limit: 10000 // 10kb
         }
       }
     ]

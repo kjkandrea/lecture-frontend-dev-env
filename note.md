@@ -49,4 +49,21 @@ module: {
 import './main.css'
 ```
 
+### 10kb 미만 이미지는 해시로 수정해버리기~
+```
+npm i -D url-loader
+```
+
+``` javascript
+{
+    test: /\.(jpg|png)$/,
+    loader: 'url-loader',
+    options: {
+        publicPath: './dist/',
+        name: '[name].[ext]?[hash]',
+        limit: 10000 // 10kb
+    }
+}
+```
+
 ### 😎 PROFIT 😎
