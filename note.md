@@ -14,3 +14,18 @@ npm i -D style-loader css-loader
 npm i -D file-loader
 ```
 
+### css-loader style-loader 옵션 설정
+
+``` javascript
+module: {
+    rules: [
+      {
+        test: '/\.css$/',
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      }
+    ]
+  }
+```
