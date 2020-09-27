@@ -27,5 +27,26 @@ module: {
         ]
       }
     ]
-  }
+}
 ```
+
+### file-loader 옵션 설정
+
+``` javascript
+{
+    test: /\.(jpg|png)$/,
+    loader: 'file-loader',
+    options: {
+      publicPath: './dist/',
+      name: '[name].[ext]?[hash]'
+    }
+}
+```
+
+### app.js 에서 css 로드
+
+``` javascript
+import './main.css'
+```
+
+### 😎 PROFIT 😎
