@@ -12,7 +12,8 @@ module.exports = {
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
-    // TODO: 프리티어 설정을 추가하세요.
-    "rules": {
-    }
+    plugins: ["prettier"],
+    rules: {
+        "prettier/prettier": "error",
+    },
 };
